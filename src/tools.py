@@ -1,8 +1,5 @@
-
 from langchain_core.tools import tool
-import datetime
-import pytz
-
+import requests
 
 # ----------------------------
 # Define tools
@@ -16,14 +13,20 @@ def calculate(expression: str) -> str:
     except Exception as e:
         return f"Error: {e}"
 
-@tool
-def get_current_time(timezone: str = "UTC") -> str:
-    """Get current time in a timezone."""
-    try:
-        now_utc = datetime.datetime.now(datetime.UTC)
-        target_timezone = pytz.timezone(timezone)
-        return now_utc.astimezone(target_timezone).strftime("%Y-%m-%d %H:%M:%S %Z")
-    except Exception as e:
-        return f"Error: {e}"
 
-tools = {t.name: t for t in [calculate, get_current_time]}
+@tool
+def request_price(product: str) -> str:
+    """Send a request to the local API server to get the price of a product."""
+    url = "http://127.0.0.1:8000/query"
+    payload = {"query": product}
+
+    try:
+        response = requests.post(url, json=payload)
+        response.raise_for_status()
+        data = response.json()
+        return data
+    except requests.exceptions.RequestException as e:
+        return f"Request failed: {e}"
+
+
+tools = {t.name: t for t in [calculate, request_price]}

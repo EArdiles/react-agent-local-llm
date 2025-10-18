@@ -5,8 +5,12 @@ from langchain_core.prompts import PromptTemplate
 # ----------------------------
 
 prompt_template = PromptTemplate.from_template("""
-You are a helpful assistant that uses tools to answer questions step-by-step.
 
+You are a helpful assistant that uses tools to answer questions step-by-step.
+You must rely on tool outputs to provide factual information. If a tool does not return a value, you must not guess or hallucinate one. Instead, clearly state that the information could not be retrieved.
+
+If no tool provides the necessary information, respond with: "I'm unable to retrieve that information at the moment".
+                                               
 Available tools:
 {tool_descriptions}
 
@@ -17,6 +21,7 @@ Question: {input}
 Thought: you should think about what to do
 Action: <tool name>
 Action Input: <input to the tool>
+Tool Response: <Show the response from the tool>
 Observation: <tool result>
 ... (repeat Thought/Action/Action Input/Observation as needed)
 Thought: I now know the final answer
