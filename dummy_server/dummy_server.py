@@ -15,4 +15,4 @@ async def handle_query(request: QueryRequest):
     else:
         return {"response": "Query not recognized"}
     
-# run usin: uvicorn dummy_server:app --reload  
+# run using: uvicorn dummy_server:app --reload  

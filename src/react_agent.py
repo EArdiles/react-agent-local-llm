@@ -8,7 +8,7 @@ from langchain_core.runnables import RunnableLambda
 import re
 
 
-llm = OllamaLLM(model="llama3.1")
+llm = OllamaLLM(model="llama3.2")
 tool_descriptions = "\n".join([f"{name}: {tool.description}" for name, tool in tools.items()])
 
 # ----------------------------
