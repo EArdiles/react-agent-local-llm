@@ -24,7 +24,7 @@ def request_price(product: str) -> str:
         response = requests.post(url, json=payload)
         response.raise_for_status()
         data = response.json()
-        return data
+        return str(data.get("response"))
     except requests.exceptions.RequestException as e:
         return f"Request failed: {e}"
 
