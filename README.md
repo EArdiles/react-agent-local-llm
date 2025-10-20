@@ -1,7 +1,7 @@
 
 # Local ReAct AI Agent with LangGraph & Ollama
 
-A local-first AI agent framework using LangGraph and Ollama. Implements a ReAct-style reasoning loop with tool calling, external API integration, and step-by-step problem solving using local LLMs like LLaMA 3.1. Ideal for building private, extensible AI assistants.
+A local-first AI agent framework using LangGraph and Ollama. Implements a ReAct-style reasoning loop with tool calling, external API integration, and step-by-step problem solving using local LLMs like LLaMA 3.2. Ideal for building private, extensible AI assistants.
 
 ---
 
@@ -34,17 +34,26 @@ pip install -r requirements.txt
 
 ### 4. Run the LLM Model with Ollama
 
-Make sure you have Ollama installed and running. Then, start the LLaMA 3.1 model:
+Make sure you have Ollama installed and running. Then, start the LLaMA 3.2 model:
 
 ```
-ollama run llama3.1
+ollama run llama3.2
 ```
 
-> ⚠️ Replace `llama3.1` with the exact model tag if needed.
+> ⚠️ Replace `llama3.2` with the exact model tag if needed.
 
-### 5. Run the Agent
+
+### 5. Run the Dummy Server
 
 ```
+cd dummy_server
+uvicorn dummy_server:app --reload
+```
+
+### 6. Run the Agent
+
+```
+cd src
 python main.py
 ```
 
@@ -52,7 +61,7 @@ python main.py
 
 ## 🧠 Features
 
-- ReAct-style reasoning loop  
+- Chain-based workflow  
 - Tool calling and external API integration  
 - Local-first architecture for privacy and control  
 - Built with LangGraph and powered by Ollama
@@ -63,4 +72,4 @@ python main.py
 
 - Python 3.9+  
 - Ollama  
-- LLaMA 3.1 model installed via Ollama
+- LLaMA 3.2 model installed via Ollama
