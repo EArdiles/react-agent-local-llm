@@ -1,5 +1,5 @@
 
-# Local ReAct AI Agent with LangGraph & Ollama
+# Local AI Agent with LangGraph & Ollama
 
 A local-first AI agent framework using LangGraph and Ollama. Implements a ReAct-style reasoning loop with tool calling, external API integration, and step-by-step problem solving using local LLMs like LLaMA 3.2. Ideal for building private, extensible AI assistants.
 
